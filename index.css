@@ -1,3 +1,7 @@
+body {
+	height: 100vh;
+}
+
 .greeting {
 	text-align: center;
 }
@@ -12,4 +16,22 @@
 	font-family: 'Roboto Mono';
 	font-size: 2em;
 	margin: 0;
+}
+
+.socials-wrapper {
+	position: fixed;
+	bottom: 0;
+	padding-bottom: 1em;
+	width: 100vw;
+}
+
+.socials {
+	display: flex;
+	justify-content: center;
+}
+
+a > img {
+	height: min(3.5em, 20vh);
+	width: min(3.5em, 20vw);
+	padding: 0 .75em;
 }
