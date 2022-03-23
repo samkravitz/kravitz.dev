@@ -1,0 +1,15 @@
+.greeting {
+	text-align: center;
+}
+
+.greeting > .name {
+	font-family: 'Pacifico';
+	font-size: 5em;
+	margin: 0;
+}
+
+.greeting > .subheading {
+	font-family: 'Roboto Mono';
+	font-size: 2em;
+	margin: 0;
+}
