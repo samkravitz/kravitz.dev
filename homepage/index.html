@@ -1,0 +1,228 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css"
+    />
+    <link
+      rel="icon"
+      href="https://www.pinclipart.com/picdir/middle/576-5760404_snorlax-pokemon-snorlax-clipart.png"
+    />
+    <title>Sam's Homepage</title>
+
+    <style>
+      * {
+        font-family: Hack, monospace;
+      }
+
+      body {
+        background: #3b3d41;
+        padding: 0 1em;
+      }
+
+      .main {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        color: white;
+      }
+
+      #search-bar {
+        width: 1000px;
+        height: 3rem;
+        border-radius: 5px;
+        font-size: 2rem;
+        text-align: center;
+        outline: none;
+        background-color: #43464b;
+        border: 1px solid black;
+        color: white;
+      }
+
+      #search-bar:focus,
+      #search-bar:hover {
+        border: 2px solid #cf8700;
+      }
+
+      #search-icon {
+        position: relative;
+        transform: translateX(-50px);
+      }
+
+      #links {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px 60px;
+        margin: 5em 0;
+      }
+
+      #link-item {
+        display: flex;
+        align-items: center;
+      }
+
+      #link-text {
+        color: white;
+        padding-left: 5px;
+      }
+
+      #link-item > img {
+        width: 40px;
+      }
+
+      #current-date {
+        font-size: x-large;
+      }
+
+      #current-time {
+        color: grey;
+        font-size: large;
+      }
+
+      #temp,
+      #weather-description {
+        color: grey;
+        vertical-align: middle;
+      }
+
+      #weather-icon {
+        vertical-align: middle;
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+        function updateClock() {
+          const date = new Date();
+
+          document.getElementById("current-date").innerHTML =
+            date.toDateString();
+          document.getElementById("current-time").innerHTML =
+            date.toLocaleTimeString();
+
+          setTimeout(updateClock, 1000);
+        }
+
+        updateClock();
+
+        const WEATHER_API_KEY = "62e852c14fe449d1cedb0556eb124807";
+        const lat = "41.590597";
+        const lon = "-87.065751";
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            const temp = data["main"]["temp"];
+            const iconId = data["weather"][0]["icon"];
+            const description = data["weather"][0]["description"];
+            document.getElementById(
+              "weather-description"
+            ).innerHTML = `${description}`;
+            document.getElementById("temp").innerHTML = ` | ${Math.trunc(
+              temp
+            )}°F`;
+            document.getElementById(
+              "weather-icon"
+            ).src = `http://openweathermap.org/img/w/${iconId}.png`;
+          });
+
+        const number = Math.floor(Math.random() * (493 - 1 + 1) + 1);
+        fetch(`https://pokeapi.co/api/v2/pokemon/${number}`)
+          .then((res) => res.json())
+          .then((data) => {
+            const sprite = data["sprites"]["front_default"];
+            document.getElementById("pokemonSprite").src = sprite;
+          });
+
+        document.getElementById("search-bar").onkeypress = function (e) {
+          const keyCode = e.code || e.key;
+          if (keyCode == "Enter") {
+            window.location.href = `https://duckduckgo.com/?q=${e.target.value}`;
+          }
+        };
+      };
+    </script>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="time">
+        <div id="current-date"></div>
+        <div id="current-time"></div>
+      </div>
+
+      <div class="weather">
+        <div>Chesterton, IN</div>
+        <div>
+          <span id="weather-description"></span>
+          <img id="weather-icon" src="" alt="Weather icon" />
+          <span id="temp"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <img
+        id="pokemonSprite"
+        src=""
+        alt="Pokemon sprite"
+        width="auto"
+        height="400"
+      />
+      <div>
+        <input id="search-bar" type="text" />
+        <img src="icons/search.svg" id="search-icon" />
+      </div>
+      <div id="links">
+        <div id="link-item">
+          <img src="icons/youtube.png" />
+          <a id="link-text" href="https://youtube.com">YouTube</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/lichess.png" />
+          <a id="link-text" href="https://lichess.org">Lichess</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/chess.com.png" />
+          <a id="link-text" href="https://chess.com">Chess.com</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/wikipedia.png" />
+          <a id="link-text" href="https://wikipedia.org">Wikipedia</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/stackoverflow.png" />
+          <a id="link-text" href="https://stackoverflow.com">Stack Overflow</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/duckduckgo.png" />
+          <a id="link-text" href="https://duck.com">Duckduckgo</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/twitch.png" />
+          <a id="link-text" href="https://twitch.tv">Twitch</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/goodreads.png" />
+          <a id="link-text" href="https://goodreads.com">Goodreads</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/fidelity.png" />
+          <a id="link-text" href="https://fidelity.com">Fidelity</a>
+        </div>
+        <div id="link-item">
+          <img src="icons/usaa.png" />
+          <a id="link-text" href="https://usaa.com">USAA</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
