@@ -1,7 +1,11 @@
 body {
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-  height: 100vh;
-  margin: 0;
+  height: calc(100vh - 100px);
+
+  background-color: #e5e5e5;
+  border: 1px solid black;
+  margin: 50px 50px;
+  position: relative;
+  overflow: hidden;
 }
 
 .greeting {
@@ -21,10 +25,10 @@ body {
 }
 
 .socials-wrapper {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   padding-bottom: 1em;
-  width: 100vw;
+  width: 100%;
 }
 
 .socials {
