@@ -9,7 +9,7 @@ body {
 }
 
 #greeting {
-	padding: 1em 2em;
+  padding: 1em 2em;
 }
 
 #greeting > .name {
@@ -45,12 +45,47 @@ a > img {
 }
 
 #about {
-	position: absolute;
-	right: 0;
-	bottom: 20%;
-	margin-right: 1em;
-	font-family: "Noto Sans JP", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
+  position: absolute;
+  right: 0;
+  bottom: 20%;
+  margin-right: 1em;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-right: 1em;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+#navigation a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  float: left;
+  margin: 0 5px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+ul li:hover {
+  border-bottom: 1px solid black;
 }
