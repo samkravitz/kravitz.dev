@@ -8,19 +8,21 @@ body {
   overflow: hidden;
 }
 
-.greeting {
-  text-align: center;
+#greeting {
+	padding: 1em 2em;
 }
 
-.greeting > .name {
-  font-family: "Pacifico";
+#greeting > .name {
+  font-family: "Archivo", sans-serif;
   font-size: 5em;
+  font-weight: 100;
   margin: 0;
 }
 
-.greeting > .subheading {
+#greeting > .subheading {
   font-family: "Roboto Mono";
   font-size: 2em;
+  font-weight: 100;
   margin: 0;
 }
 
