@@ -43,3 +43,14 @@ a > img {
   width: min(3.5em, 20vw);
   padding: 0 0.75em;
 }
+
+#about {
+	position: absolute;
+	right: 0;
+	bottom: 20%;
+	margin-right: 1em;
+	font-family: "Noto Sans JP", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
