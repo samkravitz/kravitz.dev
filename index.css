@@ -8,6 +8,36 @@ body {
   overflow: hidden;
 }
 
+#gradient {
+	height: calc(100vh - 100px);
+	margin: 0;
+	--primary-stripe-rgb: #e5e5e5;
+	--secondary-stripe-rgb: #a9abab2d;
+  
+	background: linear-gradient(
+	  -45deg,
+	  var(--primary-stripe-rgb) 25%,
+	  var(--secondary-stripe-rgb) 25%,
+	  var(--secondary-stripe-rgb) 50%,
+	  var(--primary-stripe-rgb) 50%,
+	  var(--primary-stripe-rgb) 75%,
+	  var(--secondary-stripe-rgb) 75%,
+	  var(--secondary-stripe-rgb) 100%
+	);
+	background-size: 200px 200px;
+	animation: pan 420s linear infinite;
+}
+
+@keyframes pan {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 200% 200%;
+	}
+}
+
+
 #greeting {
   padding: 1em 2em;
 }
@@ -60,7 +90,6 @@ a > img {
   justify-content: flex-end;
   gap: 15px;
   margin-right: 1em;
-  margin-top: 10px;
   text-decoration: none;
 }
 
@@ -87,5 +116,5 @@ ul li a {
 }
 
 ul li:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
