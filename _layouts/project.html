@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+    {%- if page.tech -%}
+    <p class="project-tech"><strong>Tech:</strong> {{ page.tech }}</p>
+    {%- endif -%}
+    {%- if page.links -%}
+    <div class="project-links">
+      {%- for link in page.links -%}
+        <a href="{{ link.url }}" class="project-link">{{ link.name }}</a>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </header>
+
+  {%- if page.image -%}
+  <div class="project-hero-image">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
+  </div>
+  {%- endif -%}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>

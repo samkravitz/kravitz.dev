@@ -1,0 +1,77 @@
+---
+layout: default
+---
+
+<div class="home">
+  <h1>{{ page.title }}</h1>
+
+  <div class="projects-list">
+    {%- assign sorted_projects = site.projects | sort: 'date' | reverse -%}
+    
+    {%- for project in sorted_projects -%}
+      {%- assign index = forloop.index | modulo: 2 -%}
+      
+      <article class="project-card">
+        {%- if index == 1 -%}
+          <!-- Screenshot on left -->
+          <div class="project-content image-left">
+            {%- if project.image -%}
+            <div class="project-image">
+              <a href="{{ project.url | relative_url }}">
+                <img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}">
+              </a>
+            </div>
+            {%- endif -%}
+            <div class="project-details">
+              <h2 class="project-title">
+                <a href="{{ project.url | relative_url }}">{{ project.title | escape }}</a>
+              </h2>
+              {%- if project.description -%}
+              <p class="project-description">{{ project.description }}</p>
+              {%- endif -%}
+              {%- if project.tech -%}
+              <p class="project-tech"><strong>Tech:</strong> {{ project.tech }}</p>
+              {%- endif -%}
+              {%- if project.links -%}
+              <div class="project-links">
+                {%- for link in project.links -%}
+                  <a href="{{ link.url }}" class="project-link">{{ link.name }}</a>
+                {%- endfor -%}
+              </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- else -%}
+          <!-- Screenshot on right -->
+          <div class="project-content image-right">
+            <div class="project-details">
+              <h2 class="project-title">
+                <a href="{{ project.url | relative_url }}">{{ project.title | escape }}</a>
+              </h2>
+              {%- if project.description -%}
+              <p class="project-description">{{ project.description }}</p>
+              {%- endif -%}
+              {%- if project.tech -%}
+              <p class="project-tech"><strong>Tech:</strong> {{ project.tech }}</p>
+              {%- endif -%}
+              {%- if project.links -%}
+              <div class="project-links">
+                {%- for link in project.links -%}
+                  <a href="{{ link.url }}" class="project-link">{{ link.name }}</a>
+                {%- endfor -%}
+              </div>
+              {%- endif -%}
+            </div>
+            {%- if project.image -%}
+            <div class="project-image">
+              <a href="{{ project.url | relative_url }}">
+                <img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}">
+              </a>
+            </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </article>
+    {%- endfor -%}
+  </div>
+</div>
