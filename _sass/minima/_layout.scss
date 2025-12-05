@@ -253,3 +253,21 @@
     }
   }
 }
+
+.quote-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5rem;
+
+  .quote {
+    color: #828282;
+    padding-left: 15px;
+    font-size: 18px;
+    letter-spacing: -1px;
+    font-style: italic;
+  }
+
+  .fagen {
+    text-align: center;
+  }
+}
