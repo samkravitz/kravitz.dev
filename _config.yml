@@ -23,7 +23,7 @@ email: samkravitz99@gmail.com
 description: This is the personal blog and portfolio of Sam Kravitz, a software engineer based in Indiana.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://kravitz.dev" # the base hostname & protocol for your site, e.g. http://example.com
-permalink: /blog/:title # URL format for blog posts
+permalink: /blog/:title.html # URL format for blog posts
 
 # Social links
 twitter_username: krav1tz
