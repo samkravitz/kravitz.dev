@@ -1,15 +1,13 @@
 ---
 layout: project
-title: "Example Project"
-date: 2024-01-15
-description: "A brief description of what this project does and why it's interesting. This will appear on the projects listing page."
-tech: "Ruby, JavaScript, HTML/CSS"
-image: "/assets/project-screenshot.jpg"
+title: Discovery
+display_order: 2
+description: A Nintendo Gameboy Advance emulator.
+tech: C++
+image: /assets/discovery.png
 links:
-  - name: "GitHub"
-    url: "https://github.com/samkravitz/project"
-  - name: "Live Demo"
-    url: "https://example.com"
+  - name: GitHub
+    url: https://github.com/samkravitz/maestro
 ---
 
 ## Overview
