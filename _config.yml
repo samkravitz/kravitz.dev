@@ -24,6 +24,7 @@ description: This is the personal blog and portfolio of Sam Kravitz, a software 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://kravitz.dev" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /blog/:title.html # URL format for blog posts
+google_analytics: G-N2RZJ8HWLE
 
 # Social links
 twitter_username: krav1tz
