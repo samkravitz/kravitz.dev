@@ -4,7 +4,7 @@ title: Maestro
 display_order: 3
 description: A hobby operating system for the x86 architecture.
 tech: C, x86 ASM
-image: "/assets/discovery.png"
+image:
 links:
   - name: "GitHub"
     url: "https://github.com/samkravitz/maestro"
