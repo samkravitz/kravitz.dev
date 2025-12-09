@@ -12,23 +12,24 @@ links:
 
 ## Overview
 
-This is a detailed description of your project. You can use full markdown here to explain:
-
-- What the project does
-- Why you built it
-- Technical challenges you faced
-- What you learned
+The web browser just might be the pinnacle of software engineering. We use one every day, but the internals of how they work continue to be a mystery to many, myself included. That mystery was uncovered a little bit when I came across Matt Brubeck's [robinson](https://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html) article series, where he built a toy web rendering engine using rust. I fell in love with that article and decided to expand upon it, building Hinawa.
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Custom HTML parser and renderer
+- Custom CSS parser, implementing block and inline layouts
+- JavaScript interpreter and runtime
+- Network stack supporting HTTP and HTTPS protocols
 
 ## Technical Details
 
-Add more details about the implementation, architecture, or interesting technical decisions you made.
+Hinawa can display toy and very small web pages that use a very limited subset of web features. It has layout, styling, and can even interact with the web document using JavaScript!
 
 ## Screenshots
+Here are some renders of Hinawa running
 
-You can add more images here if needed.
+Rendering a raytracer demo from [nerget.com](https://nerget.com/rayjs/rayjs.html)
+![Hinawa rendering a ray tracer demo](/assets/hinawa/raytracer.png)
+
+Rendering the default Apache web server's index.html
+![Default Apache index.html](/assets/hinawa/apache.png)
