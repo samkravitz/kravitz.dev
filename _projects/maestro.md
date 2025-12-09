@@ -7,28 +7,20 @@ tech: C, x86 ASM
 image: "/assets/discovery.png"
 links:
   - name: "GitHub"
-    url: "https://github.com/samkravitz/hinawa"
+    url: "https://github.com/samkravitz/maestro"
 ---
 
 ## Overview
 
-This is a detailed description of your project. You can use full markdown here to explain:
-
-- What the project does
-- Why you built it
-- Technical challenges you faced
-- What you learned
+My favorite class during my undergrad was Operating Systems. In the class, we added and tinkered with features for a toy operating systems, learning basics about task management, memory management, locking mechanisms, and much more. I really loved learning about it, and wanted to create my own kernel to learn more. Maestro is my symphony in C.
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Small, fast, UNIX-like 32 bit microkernel featuring a handwritten libc and round-robin scheduler
+- Filesystem and executable format runner
+- Handwritten bootloader in x86 assembly
+- Hardware (keyboard, mouse, monitor) support
 
 ## Technical Details
 
-Add more details about the implementation, architecture, or interesting technical decisions you made.
-
-## Screenshots
-
-You can add more images here if needed.
+Maestro implements the EXT2 filesystem and ELF format for executables. There is a usermode and kernel mode, and it's own shell that is run in user mode. There is the beginnings of a network stack and graphical output, but I have not gotten very far in these areas yet.
