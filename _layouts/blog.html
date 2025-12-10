@@ -4,6 +4,8 @@ layout: default
 
 <div class="home">
   <h1>{{ page.title }}</h1>
+  <h4>A collection of my writings about programming, life, and thoughts in general</h4>
+  <p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a> for more posts!</p>
 
   <div class="list">
     {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
