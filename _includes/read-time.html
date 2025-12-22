@@ -1,0 +1,8 @@
+{% capture words %}
+{{ include.content | strip_html | number_of_words }}
+{% endcapture %}
+{% assign words = words | times: 1 %}
+{% assign read_time = words | divided_by: 180 | plus: 1 %}
+<span class="read-time" title="Estimated read time">
+    {{ read_time }} min read
+</span>
