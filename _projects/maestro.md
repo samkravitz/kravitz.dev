@@ -12,14 +12,15 @@ links:
 
 ## Overview
 
-My favorite class during my undergrad was Operating Systems. In the class, we added and tinkered with features for a toy operating systems, learning basics about task management, memory management, locking mechanisms, and much more. I really loved learning about it, and wanted to create my own kernel to learn more. Maestro is my symphony in C.
+My favorite class during my undergrad was Operating Systems. In the class, we added and tinkered with features for a toy operating system, learning basics about task management, memory management, locking mechanisms, and much more. I really loved learning about it, and wanted to create my own kernel to learn more. Maestro is my symphony in C.
 
 ## Features
 
-- Small, fast, UNIX-like 32 bit microkernel featuring a handwritten libc and round-robin scheduler
-- Filesystem and executable format runner
+- Small, fast, UNIX-like 32-bit monolithic kernel
+- EXT2 filesystem driver and executable format runner
 - Handwritten bootloader in x86 assembly
 - Hardware (keyboard, mouse, monitor) support
+- Handwritten libc
 
 ## Technical Details
 
