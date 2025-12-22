@@ -5,12 +5,12 @@ date:   2025-12-21
 categories: programming gaming
 ---
 ## Introduction
-Pokemon was a staple of my childhood. I got lost in these games for hours, capturing and training up my friendly monsters. Apart from being core memories, these games also ignited my spark of curiosity for computing. How did games get made? How do they work? How is my pokemon team represented in code, and persisted in between rebooting the game? I wanted to answer these questions, for science, and definitely *not* as an excuse to revisit these games. Let's dig in.
+Pokemon was a staple of my childhood. I got lost in these games for hours, capturing and training my team of monsters. Beyond the nostalgia, these games also ignited my curiosity for computing. How did games get made? How do they work? How is my pokemon team represented in code, and persisted in between rebooting the game? I wanted to answer these questions, for science, and definitely *not* as an excuse to revisit these games. Let's dig in.
 
 ## The Pokemon Data Structure (Pokemon Red/Blue/Yellow)
 In Generation I, where the series began back in 1998, the 64 byte [data structure](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_data_structure_(Generation_I)) holds all the data that makes a Pokemon, well, a Pokemon.
 
-The structure is layed out like this:
+The structure is laid out like this:
 ![Gen I Data Structure Layout](/assets/posts/memory_layout_in_pokemon/memory_layout.png)
 
 Modelling this data structure in a language like C is trivial:
@@ -39,20 +39,20 @@ Take note of its attributes:
 - HP: 102
 - Type 1: Water
 
-Imagine we can pause the game state and inspect the memory of the game at this very moment. [Sameboy](https://sameboy.github.io), the emulator I am using for this project, provides this feature! According to the article, the first Pokemon in our party's data structure begins at address `0xD163` + `0x08`. Let's go there and see what we see.
+Imagine we can pause the game state and inspect the memory of the game at this very moment. [Sameboy](https://sameboy.github.io), the emulator I am using for this project, provides this feature! According to the article, the data structure for the first Pokemon in our party begins at address `0xD163` + `0x08`. Let's go there and see what we see.
 
 I've highlighted the 64 bytes (size of our data structure) at address `0xD16B` below. It's a bit hard to parse, but let's break it down:
 ![Vaporeon's data dump in hex](/assets/posts/memory_layout_in_pokemon/vaporeon_memory.png)
 
 
 ### Offset `0x00`: Index Number (1 byte)
-The first byte in the data structure, `0x69`, is our Pokemon's index number. `Ox69` is `105` in decimal, which is different than the number we see in game, which is `134`. What gives? Well, the index number the game uses to keep track of what Pokemon is what is different than the Pokedex number which is displayed in game. [This page](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_in_Generation_I) shows the mapping between index numbers and Pokedex numbers (The first Pokemon [ever designed](https://nintendoeverything.com/rhydon-was-the-first-pokemon-ever-created/), Rhydon, is index number `1`). We can see that Vaporeon does indeed correspond to index number `105`, so we know we're looking at the right data.
+The first byte in the data structure, `0x69`, is our Pokemon's index number. `Ox69` is `105` in decimal, which is different from the number we see, which is `134`. What gives? Well, the internal index number the game uses to identify Pokemon differs from the Pokedex number displayed in-game. [This page](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_in_Generation_I) shows the mapping between index numbers and Pokedex numbers (The first Pokemon [ever designed](https://nintendoeverything.com/rhydon-was-the-first-pokemon-ever-created/), Rhydon, is index number `1`). We can see that Vaporeon does indeed correspond to index number `105`, so we know we're looking at the right data.
 
 ### Offset `0x01`: Current HP (2 bytes)
 Here, we see the value `0x0066`, which is `102` in decimal, the current HP of the Pokemon.
 
 ### Offset `0x03`: Level (1 byte)
-This is the unusual one because there are two fields for level, one at `0x03`, and one at `0x21`. At both offsets we can see the value `0x19` (`25` decimal), so both seem to be accurate. Bulbapedia claims only the value at `0x21` is relevant, so I'm not sure why both work here.
+This is the unusual one because there are two fields for level, one at `0x03`, and one at `0x21`. At both offsets we can see the value `0x19` (`25` decimal), so both seem to be accurate. Bulbapedia claims only the value at `0x21` is relevant, so I'm not sure the reason for the redundancy.
 
 ### Offset `0x04`: Status Condition (1 byte)
 The status condition byte is interpreted with the following bitfield:
@@ -65,7 +65,7 @@ The status condition byte is interpreted with the following bitfield:
 | 6   | 0x20  | Frozen           |
 | 7   | 0x40  | Paralyzed        |
 
-My Pokemon, has status OK, so none of these bits are set, so seeing `0x00` at this offset makes sense.
+My Pokemon has status OK, so none of these bits are set, so seeing `0x00` at this offset makes sense.
 
 ### Offset `0x05`: Type (1 byte)
 The final field we'll look at for now is the type byte, which follows this mapping:
@@ -89,7 +89,7 @@ The final field we'll look at for now is the type byte, which follows this mappi
 | 25  | 0x19 | Ice           |
 | 26  | 0x1A | Dragon        |
 
-Our water type Pokemon has `0x15`, which is the correct mapping.
+Our water-type Pokemon has `0x15`, which is the correct mapping.
 
 ## Writing to our Data Structure
 Our Vaporeon is cool and all, but I want my favorite Pokemon, Snorlax. If we could write values to this data structure, could I turn my Vaporeon into a Snorlax without having to go catch one? Sameboy provides this ability as well. Let's do it!
@@ -117,4 +117,4 @@ And the game reinterprets that structure to our desired creature. Neat!
 ![Snorlax](/assets/posts/memory_layout_in_pokemon/snorlax.png)
 
 ## Conclusion
-By now, we've learned how the orginal Pokemon games interpret memory to display Pokemon and their attributes, as well as how to change them. Being able to write to any memory address on the console is insanely powerful, and basically lets you do anything you want in the game. There are many implications of this in gaming, such as cheating. I hope you learned something new in this post!
+By now, we've learned how the original Pokemon games interpret memory to display Pokemon and their attributes, as well as how to modify them. The ability to directly modify memory addresses reveals the fundamental relationship between data and gameplay; changing a few bytes can transform a Vaporeon into a Snorlax! This technique has broader implications in gaming: cheating and creating new game content through ROM hacks, to name a few. Most importantly, it demystifies how these classic games work under the hood, bringing clarity to how these bytes come to life.
