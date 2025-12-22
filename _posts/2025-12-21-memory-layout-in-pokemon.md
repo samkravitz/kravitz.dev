@@ -5,13 +5,12 @@ date:   2025-12-21
 categories: programming gaming
 ---
 ## Introduction
-Pokemon was a staple of my childhood. I got lost in these games for hours, capturing and training my team of monsters. Beyond the nostalgia, these games also ignited my curiosity for computing. How did games get made? How do they work? How is my pokemon team represented in code, and persisted in between rebooting the game? I wanted to answer these questions, for science, and definitely *not* as an excuse to revisit these games. Let's dig in.
+Pokemon was a staple of my childhood. I got lost in these games for hours, capturing and training my team of monsters. Beyond the nostalgia, these games also ignited my curiosity for computing. How were these games made? How do they work? How are my Pokemon represented in code, and persisted in between boots of the game? I wanted to answer these questions, for science, and definitely *not* as an excuse to revisit these games. Let's dig in.
 
-## The Pokemon Data Structure (Pokemon Red/Blue/Yellow)
-In Generation I, where the series began back in 1998, the 64 byte [data structure](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_data_structure_(Generation_I)) holds all the data that makes a Pokemon, well, a Pokemon.
+## The Pokemon Data Structure
+In Generation I, where the series began in 1998, this 64 byte [data structure](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_data_structure_(Generation_I)) holds all the data that makes a Pokemon, well, a Pokemon. It contains fields for a Pokemon's index number, stats, level, status, etc.
 
-The structure is laid out like this:
-![Gen I Data Structure Layout](/assets/posts/memory_layout_in_pokemon/memory_layout.png)
+The structure is laid out like this (cropped for brevity):![Gen I Data Structure Layout](/assets/posts/memory_layout_in_pokemon/memory_layout.png)
 
 Modelling this data structure in a language like C is trivial:
 
@@ -21,6 +20,7 @@ typedef struct {
   uint16_t current_hp;
   uint8_t level;
   uint8_t status_condition;
+  uint8_t type1;
   // other fields
 } Pokemon;
 {% endhighlight %}
@@ -101,7 +101,7 @@ We'll craft a Snorlax with these attributes:
 - HP: 255
 - Type 1: Normal
 
-For fun, we'll also make all of his stats 150. I didn't describe where to find the offset for the stats for brevity, but it's the same process as the other attributes.
+For fun, we'll also make all of his stats 150. I didn't describe where to find the offset of the stats for brevity, but it's the same process as the other attributes.
 
 | Offset | Value (hex) | Value (Decimal) | Description             |
 |--------|-------------|-----------------|-------------------------|
